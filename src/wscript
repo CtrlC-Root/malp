@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+
+def build(ctx):
+    """Build the project."""
+
+    ctx(rule="${CC} -o ${TGT} -mmcu=${CC_MCU} -Os ${SRC}", target="remote", source="main.c")
+    #ctx(rule="avr-objcopy -O ihex -R .eeprom malp malp.hex")
+    #ctx(rule="avr-objcopy -j .eeprom --set-section-flags=.eeprom=\"alloc,load\" -O ihex malp malp.eep")
