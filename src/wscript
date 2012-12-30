@@ -1,8 +1,20 @@
 #!/usr/bin/env python
 
+def configure(ctx):
+    """Configure the project."""
+
+    ctx.env.append_value("CFLAGS", ["-Os"])
+
 def build(ctx):
     """Build the project."""
 
-    ctx(rule="${CC} -o ${TGT} -mmcu=${CC_MCU} -Os ${SRC}", target="remote", source="main.c")
-    #ctx(rule="avr-objcopy -O ihex -R .eeprom malp malp.hex")
-    #ctx(rule="avr-objcopy -j .eeprom --set-section-flags=.eeprom=\"alloc,load\" -O ihex malp malp.eep")
+    # compile
+    ctx(rule="${CC} -c -o ${TGT} ${CFLAGS} -mmcu=${MCU} ${SRC}", target="remote.o", source="remote.c")
+    ctx(rule="${CC} -c -o ${TGT} ${CFLAGS} -mmcu=${MCU} ${SRC}", target="main.o", source="main.c")
+
+    # link
+    ctx(rule="${CC} -o ${TGT} ${LFLAGS} -mmcu=${MCU} ${SRC}", target="malp", source=["remote.o", "main.o"])
+
+    # prepare
+    ctx(rule="${OBJCOPY} -O ihex -R .eeprom ${SRC} ${TGT}", source="malp", target="malp.hex")
+    ctx(rule="${OBJCOPY} -j .eeprom --set-section-flags=.eeprom=\"alloc,load\" -O ihex ${SRC} ${TGT}", source="malp", target="malp.eep")

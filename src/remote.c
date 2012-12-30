@@ -1,6 +1,9 @@
 // MALP
 #include "remote.h"
 
+// C Standard Library
+#include <stdlib.h>
+
 // remote buffer
 remote_buffer_t remote_buffer;
 

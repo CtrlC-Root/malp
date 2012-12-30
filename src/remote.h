@@ -1,6 +1,9 @@
 // MALP
 #include "config.h"
 
+// C Standard Library
+#include <stdint.h>
+
 /**
  * Remote Control Module
  *
