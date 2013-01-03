@@ -1,13 +1,13 @@
 // MALP
-#include "config.h"
+#include "queue.h"
 
 // C Standard Library
 #include <stdint.h>
 
 /**
- * Remote Control Module
+ * Remote Control Module. The module requires an 8 MHz clock, the 16bit timer,
+ * and an IR reciever connected to the ICP pin.
  *
- * Protocol:
  * 1x 18 ms - Start Pulse
  * 8x  2 ms - Data Bits (PWC)
  *
@@ -25,39 +25,18 @@
  */
 
 /**
- * Remote control code.
+ * Control code queue.
  */
-typedef uint8_t remote_code_t;
+extern volatile queue* remote_codes;
 
 /**
- * Remote control buffer.
+ * Enable the remote control module.
+ *
+ * @param queue_size size of the control code queue
  */
-typedef struct
-{
-    /**
-     * Buffer size.
-     */
-    uint8_t size;
-
-    /**
-     * Buffer count.
-     */
-    uint8_t count;
-
-    /**
-     * Buffer data.
-     */
-    remote_code_t* data;
-} remote_buffer_t;
+void remote_enable(uint8_t queue_size);
 
 /**
- * Remote control buffer. This is a circular buffer that is used to store
- * control codes. When the buffer fills up, no more remote control codes will
- * be stored.
+ * Disable the remote control module.
  */
-extern remote_buffer_t remote_buffer;
-
-/**
- * Initialize the remote control module.
- */
-void remote_init(uint8_t size);
+void remote_disable();

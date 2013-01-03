@@ -10,11 +10,12 @@ def build(ctx):
     """Build the project."""
 
     # compile
+    ctx(rule="${CC} -c -o ${TGT} ${CFLAGS} ${SRC}", target="queue.o", source="queue.c")
     ctx(rule="${CC} -c -o ${TGT} ${CFLAGS} ${SRC}", target="remote.o", source="remote.c")
     ctx(rule="${CC} -c -o ${TGT} ${CFLAGS} ${SRC}", target="main.o", source="main.c")
 
     # link
-    ctx(rule="${CC} -o ${TGT} ${LFLAGS} ${SRC}", target="malp", source=["remote.o", "main.o"])
+    ctx(rule="${CC} -o ${TGT} ${LFLAGS} ${SRC}", target="malp", source=["queue.o", "remote.o", "main.o"])
 
     # prepare
     ctx(rule="${OBJCOPY} -O ihex -R .eeprom ${SRC} ${TGT}", source="malp", target="malp.hex")

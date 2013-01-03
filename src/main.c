@@ -1,5 +1,4 @@
 // MALP
-#include "config.h"
 #include "remote.h"
 
 // AVR
@@ -11,8 +10,8 @@
  */
 int main()
 {
-    // initialize modules
-    remote_init(5);
+    // enable modules
+    remote_enable(5);
 
     // enable interrupts
     sei();
