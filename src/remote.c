@@ -22,7 +22,7 @@ volatile uint8_t code;
 // timer overflows
 volatile uint8_t overflows;
 
-// enable module
+// enable the module
 void remote_enable(uint8_t queue_size)
 {
     // create the queue
@@ -39,7 +39,7 @@ void remote_enable(uint8_t queue_size)
     TIMSK1 = (1<<TOIE1)|(1<<ICIE1);
 }
 
-// disable module
+// disable the module
 void remote_disable()
 {
     // disable the timer interrupts

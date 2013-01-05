@@ -1,3 +1,5 @@
+#pragma once
+
 // MALP
 #include "queue.h"
 
@@ -15,10 +17,10 @@
  * than 50% on is a zero and a pulse that is more than 50% on is a one.
  *
  * Volume Down - 000 11100 - 0
- * Volume Up   - 100 11100 - 4
  * Previous    - 001 11100 - 1
- * Next        - 101 11100 - 5
  * Play/Pause  - 011 11100 - 3
+ * Volume Up   - 100 11100 - 4
+ * Next        - 101 11100 - 5
  *
  * The last 5 bits are always 11100 and may be intended to signal the end of
  * a message.

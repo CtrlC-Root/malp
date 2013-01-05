@@ -1,13 +1,11 @@
-PB0 - Motor 2A
-PB1 - Motor 2B
-PB2 - Motor Enable (PWM)
-PB3 - RESET
+ATTINY44A PCB PINOUT
 
-PA0 - LED Common
-PA1 - LED Left
-PA2 - LED Right
-PA3 - Motor 1A
-PA4 - Motor 1B
-PA5 -
-PA6 -
-PA7 - IR Receiver
+                        -----------
+                (VCC) - | 1    14 | - (GND)
+       Motor 2A (PB0) - | 2    13 | - (PA0) LED Bias
+       Motor 2B (PB1) - | 3    12 | - (PA1) LED Left
+          RESET (PB3) - | 4    11 | - (PA2) LED Right
+       Motor EN (PB2) - | 5    10 | - (PA3) LED Common
+    IR RECEIVER (PA7) - | 6     9 | - (PA4) Motor 1A
+                (PA6) - | 7     8 | - (PA5) Motor 1B
+                        -----------

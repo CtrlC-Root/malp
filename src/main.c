@@ -1,4 +1,5 @@
 // MALP
+#include "motion.h"
 #include "remote.h"
 
 // AVR
@@ -11,6 +12,7 @@
 int main()
 {
     // enable modules
+    motion_enable();
     remote_enable(5);
 
     // enable interrupts
