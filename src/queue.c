@@ -7,11 +7,12 @@
 // create a queue
 queue* queue_create(const uint8_t size)
 {
-    // allocate memory for the queue
     queue* q = (queue*) malloc(sizeof(uint8_t) * (3 + size));
     q->size = size;
     q->count = 0;
     q->pos = 0;
+
+    return q;
 }
 
 // destroy a queue

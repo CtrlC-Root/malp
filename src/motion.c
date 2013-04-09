@@ -35,7 +35,7 @@ void motion_disable()
 
 //ISR(TIM0_OVF_vect)
 //{
-    // XXX something every 65 milliseconds, or ~15 times a second
+    // XXX something every 65 milliseconds (~15 times per sec)
 //}
 
 // configure the module
