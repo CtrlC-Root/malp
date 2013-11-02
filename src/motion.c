@@ -6,7 +6,7 @@ void motion_enable()
 {
     // configure output pins
     DDRA |= (1<<PA4)|(1<<PA5);
-    DDRB |= (1<<PB0)|(1<<PB1);
+    DDRB |= (1<<PB0)|(1<<PB1)|(1<<PB2);
 
     // enable the timer
     TCCR0A = (1<<WGM00);            // phase correct PWM mode
