@@ -2,10 +2,10 @@ ATTINY44A PCB PINOUT
 
                         -----------
                 (VCC) - | 1    14 | - (GND)
-  (3A) Motor 2A (PB0) - | 2    13 | - (PA0) LED Bias
-  (4A) Motor 2B (PB1) - | 3    12 | - (PA1) LED Left
-          RESET (PB3) - | 4    11 | - (PA2) LED Right
-       Motor EN (PB2) - | 5    10 | - (PA3) LED Common
-    IR RECEIVER (PA7) - | 6     9 | - (PA4) Motor 1A (1A)
-                (PA6) - | 7     8 | - (PA5) Motor 1B (2A)
+  (1A) Motor 2A (PB0) - | 2    13 | - (PA0) LED ???
+  (2A) Motor 2B (PB1) - | 3    12 | - (PA1) LED ???
+          RESET (PB3) - | 4    11 | - (PA2) LED ???
+       Motor EN (PB2) - | 5    10 | - (PA3) LED ???
+    IR RECEIVER (PA7) - | 6     9 | - (PA4) Motor 1A (4A)
+                (PA6) - | 7     8 | - (PA5) Motor 1B (3A)
                         -----------
