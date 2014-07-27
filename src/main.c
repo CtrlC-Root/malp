@@ -21,7 +21,38 @@ int main()
     // program loop
     while(1)
     {
-        // do nothing
-        _delay_ms(500);
+        // wait for a command
+		if(remote_codes->count == 0)
+		{
+			_delay_ms(100);
+			continue;
+		}
+
+		// execute the next command
+		uint8_t code;
+		queue_pop(remote_codes, &code);
+
+		switch(code)
+		{
+		case REMOTE_PLAY:
+			motion_config(STOP, 0);
+			break;
+
+		case REMOTE_VDEC:
+			motion_config(BACKWARD, 128);
+			break;
+
+		case REMOTE_VINC:
+			motion_config(FORWARD, 128);
+			break;
+
+		case REMOTE_PREV:
+			motion_config(LEFT, 128);
+			break;
+
+		case REMOTE_NEXT:
+			motion_config(RIGHT, 128);
+			break;
+		}
     }
 }

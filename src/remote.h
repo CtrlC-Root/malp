@@ -26,6 +26,12 @@
  * a message.
  */
 
+#define REMOTE_VDEC 0
+#define REMOTE_PREV 1
+#define REMOTE_PLAY 3
+#define REMOTE_VINC 4
+#define REMOTE_NEXT 5
+
 /**
  * Control code queue.
  */
