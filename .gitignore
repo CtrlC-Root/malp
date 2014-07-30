@@ -1,3 +1,7 @@
-build
+# waf
 .waf*
 .lock-waf_linux2_build
+build
+
+# eagle
+doc/eagle/*.s#*

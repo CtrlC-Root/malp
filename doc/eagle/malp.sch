@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -8466,6 +8466,58 @@ Standard 8.5x11 US Letter frame</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="supply1">
+<description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
+ GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
+ Please keep in mind, that these devices are necessary for the
+ automatic wiring of the supply signals.&lt;p&gt;
+ The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
+ In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+</packages>
+<symbols>
+<symbol name="VCC">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
+<symbol name="GND">
+<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="VCC" prefix="P+">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="VCC" symbol="VCC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="GND" prefix="GND">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -8487,6 +8539,8 @@ Standard 8.5x11 US Letter frame</description>
 <part name="C2" library="rcl" deviceset="CPOL-US" device="B45181A" value="10uF"/>
 <part name="C3" library="rcl" deviceset="CPOL-US" device="B45181A" value="1uF"/>
 <part name="FRAME1" library="SparkFun-Aesthetics" deviceset="FRAME-LETTER" device=""/>
+<part name="P+1" library="supply1" deviceset="VCC" device=""/>
+<part name="GND1" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8505,6 +8559,8 @@ Standard 8.5x11 US Letter frame</description>
 <instance part="C3" gate="G$1" x="40.64" y="53.34"/>
 <instance part="FRAME1" gate="G$1" x="-15.24" y="-58.42"/>
 <instance part="FRAME1" gate="G$2" x="132.08" y="-58.42"/>
+<instance part="P+1" gate="VCC" x="17.78" y="109.22"/>
+<instance part="GND1" gate="1" x="17.78" y="86.36"/>
 </instances>
 <busses>
 </busses>
@@ -8605,8 +8661,61 @@ Standard 8.5x11 US Letter frame</description>
 <pinref part="C1" gate="G$1" pin="+"/>
 <wire x1="5.08" y1="96.52" x2="17.78" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="A1" pin="VI"/>
-<wire x1="17.78" y1="96.52" x2="25.4" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="96.52" x2="22.86" y2="96.52" width="0.1524" layer="91"/>
 <label x="-5.08" y="96.52" size="1.778" layer="95"/>
+<junction x="17.78" y="96.52"/>
+<wire x1="22.86" y1="96.52" x2="25.4" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="96.52" x2="22.86" y2="111.76" width="0.1524" layer="91"/>
+<junction x="22.86" y="96.52"/>
+<wire x1="22.86" y1="111.76" x2="160.02" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="IC_HB" gate="G$1" pin="VCC2"/>
+<wire x1="157.48" y1="66.04" x2="160.02" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="66.04" x2="160.02" y2="111.76" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="VCC" class="0">
+<segment>
+<pinref part="IC1" gate="A1" pin="VO"/>
+<pinref part="C2" gate="G$1" pin="+"/>
+<wire x1="45.72" y1="96.52" x2="48.26" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="96.52" x2="53.34" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="96.52" x2="48.26" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="106.68" x2="17.78" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="106.68" x2="10.16" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="96.52" x2="101.6" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="96.52" x2="124.46" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="96.52" x2="124.46" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="JP_IR" gate="A" pin="2"/>
+<junction x="101.6" y="96.52"/>
+<wire x1="48.26" y1="96.52" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="73.66" x2="40.64" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="+"/>
+<wire x1="40.64" y1="55.88" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="AVR" gate="G$1" pin="VCC"/>
+<wire x1="40.64" y1="66.04" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="73.66" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="JP_PWR" gate="A" pin="3"/>
+<wire x1="5.08" y1="91.44" x2="10.16" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="91.44" x2="10.16" y2="106.68" width="0.1524" layer="91"/>
+<junction x="40.64" y="66.04"/>
+<label x="-5.08" y="91.44" size="1.778" layer="95"/>
+<label x="109.22" y="96.52" size="1.778" layer="95"/>
+<pinref part="IC_HB" gate="G$1" pin="VCC1"/>
+<wire x1="124.46" y1="66.04" x2="127" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="P+1" gate="VCC" pin="VCC"/>
+<junction x="17.78" y="106.68"/>
+<junction x="53.34" y="96.52"/>
+<junction x="48.26" y="96.52"/>
+</segment>
+</net>
+<net name="IR_DATA" class="0">
+<segment>
+<pinref part="AVR" gate="G$1" pin="(PCINT7/ICP/OC0B/ADC7)PA7"/>
+<wire x1="93.98" y1="53.34" x2="96.52" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="53.34" x2="96.52" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="JP_IR" gate="A" pin="1"/>
+<wire x1="96.52" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
+<label x="109.22" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -8627,8 +8736,8 @@ Standard 8.5x11 US Letter frame</description>
 <wire x1="40.64" y1="35.56" x2="40.64" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="35.56" x2="40.64" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="35.56" x2="40.64" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="25.4" x2="142.24" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="IC_HB" gate="G$1" pin="GND"/>
+<wire x1="40.64" y1="25.4" x2="142.24" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="25.4" x2="142.24" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="88.9" x2="12.7" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="88.9" x2="12.7" y2="93.98" width="0.1524" layer="91"/>
@@ -8638,53 +8747,18 @@ Standard 8.5x11 US Letter frame</description>
 <junction x="35.56" y="88.9"/>
 <label x="-5.08" y="93.98" size="1.778" layer="95"/>
 <label x="109.22" y="93.98" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="VCC" class="0">
-<segment>
-<pinref part="IC1" gate="A1" pin="VO"/>
-<pinref part="C2" gate="G$1" pin="+"/>
-<wire x1="45.72" y1="96.52" x2="48.26" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="96.52" x2="53.34" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="96.52" x2="48.26" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="106.68" x2="10.16" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="96.52" x2="101.6" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="96.52" x2="124.46" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="96.52" x2="124.46" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="124.46" y1="66.04" x2="129.54" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="JP_IR" gate="A" pin="2"/>
-<junction x="101.6" y="96.52"/>
-<wire x1="48.26" y1="96.52" x2="48.26" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="73.66" x2="40.64" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="+"/>
-<wire x1="40.64" y1="55.88" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="AVR" gate="G$1" pin="VCC"/>
-<wire x1="40.64" y1="66.04" x2="43.18" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="73.66" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="106.68" x2="160.02" y2="106.68" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="106.68" x2="160.02" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="66.04" x2="154.94" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="JP_PWR" gate="A" pin="3"/>
-<wire x1="5.08" y1="91.44" x2="10.16" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="91.44" x2="10.16" y2="106.68" width="0.1524" layer="91"/>
-<junction x="40.64" y="66.04"/>
-<label x="-5.08" y="91.44" size="1.778" layer="95"/>
-<label x="109.22" y="96.52" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="IR_DATA" class="0">
-<segment>
-<pinref part="AVR" gate="G$1" pin="(PCINT7/ICP/OC0B/ADC7)PA7"/>
-<wire x1="93.98" y1="53.34" x2="96.52" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="53.34" x2="96.52" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="JP_IR" gate="A" pin="1"/>
-<wire x1="96.52" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
-<label x="109.22" y="99.06" size="1.778" layer="95"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+<junction x="17.78" y="88.9"/>
+<junction x="53.34" y="88.9"/>
 </segment>
 </net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,127,66.04,IC_HB,VCC1,VCC,,,"/>
+<approved hash="104,1,157.48,66.04,IC_HB,VCC2,V+,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
