@@ -1,7 +1,7 @@
 malp
 ====
 
-A simple AVR based robot. 
+A simple AVR based robot.
 
 Build
 -----
@@ -14,11 +14,15 @@ Install required RPMs.
 
 Configure the project and locate dependencies.
 
-    $ ./waf configure
+```
+$ ./waf configure
+```
 
 Build the project and create HEX and EEP files for programming.
 
-    $ ./waf build
+```
+$ ./waf build
+```
 
 Program
 -------
@@ -29,15 +33,24 @@ Install required RPMs.
 
 Assuming you are using the AVR ISP mkII and an ATTINY44 MCU.
 
-    cd build/src
-    avrdude -p attiny44 -c avrispmkii -P usb -U flash:w:malp.hex -U eeprom:w:malp.eep
+```
+$ cd build/src
+$ avrdude -p attiny44 -c avrispmkii -P usb -U flash:w:malp.hex -U eeprom:w:malp.eep
+```
 
-TODO
-----
+Schematic
+---------
 
-Add support to the motor module for acceleration curves. The current approach
-of specifying a speed doesn't take into account the natural acceleration of the
-motor. In other words, the speed parameter currently controls how fast the
-motors reach their cruising speed, not the cruising speed. This could be fixed
-by adjusting the speed (in the timer overflow stub that's currently commented
-out) continuously.
+Install Eagle schematic editor and required part libraries.
+
+* Eagle (http://www.cadsoftusa.com)
+* SparkFun Part Library (https://github.com/sparkfun/SparkFun-Eagle-Libraries)
+* CtrlC Part Library (https://github.com/CtrlC-Root/eagle-libs)
+
+The Eagle project is in the ```doc/eagle``` directory.
+
+Reference
+---------
+
+* https://learn.sparkfun.com/tutorials/how-to-install-and-setup-eagle
+* https://learn.sparkfun.com/tutorials/using-eagle-schematic
