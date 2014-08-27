@@ -21,6 +21,7 @@
  * Play/Pause  - 011 11100 - 3
  * Volume Up   - 100 11100 - 4
  * Next        - 101 11100 - 5
+ * (Hold)      - 111 11100 - 7
  *
  * The last 5 bits are always 11100 and may be intended to signal the end of
  * a message.
